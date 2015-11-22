@@ -1,0 +1,19 @@
+reset;
+model contenuti.mod;
+data contenuti.dat;
+param numTent;
+param minR default 999999;
+let numTent:= 50;
+param val{1..numTent};
+set IT := {1..numTent};
+option randseed 1;
+option solver minos;
+for {j in IT}{
+	for{i in N}let x[i]:=x[i]+Uniform(-10,10);
+	for{i in N}let y[i]:=y[i]+Uniform(-10,10);
+	solve;
+	let val[j]:=R;
+	if val[j]<minR then 
+		let minR := val[j];
+};
+display minR;

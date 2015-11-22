@@ -1,0 +1,400 @@
+*******************************************
+Problema 1.
+
+Sono dati N cerchi nel piano cartesiano. Di ogni cerchio conosciamo il raggio. 
+Si trovi la disposizione dei (centri dei) cerchi nel piano tale per cui:
+1. i cerchi non siano sovrapposti
+2. i cerchi siano tutti contenuti in un cerchio piu' grande
+3. il raggio del cerchio che li contiene sia minimo.
+Cerchio Raggio
+1 2,00
+2 4,00
+3 7,00
+4 6,00
+5 1,00
+
+Si provi poi con cerchi di raggio crescente linearmente:
+Cerchio Raggio
+1 1,00
+2 2,00
+3 3,00
+4 4,00
+5 5,00 ecc.
+
+*******************************************
+Problema 2.
+
+Una societa telefonica deve posizionare le antenne per la trasmissione del
+segnale ai telefoni cellulari in una nuova zona prima non coperta dal servizio.
+La societa ha a disposizione 5 possibili siti, dai quali deve coprire interamente le
+5 aree nelle quali la zona e stata convenzionalmente divisa. Ogni sito
+ha un costo di realizzazione (indicato nella prima tabella) e copre un
+dato sottoinsieme di aree (indicate dalle crocette nella seconda tabella).
+
+   Sito     1    2    3    4    5
+   Costo   18   40    5   21   16
+
+   Sito     1    2    3    4    5
+   Area 1        x    x    x
+   Area 2   x                   x
+   Area 3   x    x         x
+   Area 4        x         x    x
+   Area 5   x    x              x
+
+*******************************************
+Problema 3.
+
+Bin packing
+Dato un insieme di oggetti da trasportare tramite containers
+ed un insieme di containers di capacita' nota, decidere come assegnare gli oggetti
+ai containers in modo da trasportare tutti gli oggetti, senza eccedere la capacita'
+dei containers.
+Ogni oggetto ha due valori associati, peso e volume, i containers
+hanno due corrispondenti capacita' e costi diversi.
+Si vuole minimizzare il costo complessivo dei containers usati.
+
+Oggetto; Peso; Volume
+1 10 260
+2 24 140
+3 18 190
+4 7 220
+5 7 180
+6 6 250
+7 16 170
+8 11 200
+9 8 140
+10 11 170
+11 1 190
+12 6 230
+13 15 230
+14 8 180
+15 2 250
+
+Container; Costo; Capacita'(peso);  Capacita'(volume)
+1 900 45  800 
+2 1000 50 900
+3 1200 60 1000
+4 1300 80 1100
+
+Prima  versione: è possibile usare un solo container per tipo
+Seconda versione: è possibile usare più container dello stesso tipo.
+
+*******************************************
+Problema 4.
+
+Assegnamento
+Un'azienda deve eseguire 4 lavori diversi (indicati con A, B, C, D)
+avendo a disposizione 4 persone.
+Ogni incarico richiede una e una sola persona, e ogni persona puo' svolgere
+uno e un solo incarico.
+
+Ogni persona impiega un determinato tempo (in ore) a svolgere un certo incarico,
+secondo la seguente tabella.
+             Bianchi   Verdi   Rossi   Ferrari
+ Lavoro A       12 h    15 h     9 h       5 h
+ Lavoro B       13 h    16 h    11 h       6 h
+ Lavoro C        6 h     8 h     5 h       3 h
+ Lavoro D        5 h     7 h     4 h       3 h
+
+Sapendo che l'azienda da' lo stesso stipendio orario ai suoi 4 dipendenti,
+come devono essere assegnati gli incarichi alle diverse persone per
+minimizzare il costo complessivo?
+
+*******************************************
+Problema 5.
+
+Macchine Parallele
+Un cluster di calcolo di m = 4 macchine riceve n = 12 processi. 
+I tempi (in minuti) stimati per l'esecuzione di ogni processo j, 
+j = 1,...,n su ciascuna macchina i, i = 1,..,m 
+sono dati:
+   1 2 3 4 5 6 7 8 9 10 11 12
+1 37 94 26 76 118 32 109 79 51 178 97 45
+2 67 110 44 99 133 46 106 110 80 150 140 60
+3 30 80 50 66 78 45 87 93 44 85 105 54
+4 64 34 87 89 94 54 91 80 67 129 110 80
+
+Un processo una volta assegnato ad una macchina viene da questa 
+eseguito senza interruzione (no preemption). 
+Formulare, mediante programmazione lineare intera, il problema di
+assegnare ciascun processo ad una macchina in modo da terminare 
+tutti i processi nel più breve tempo possibile.
+
+*******************************************
+Problema 6.
+
+Si determini il cammino minimo 
+fra il nodo 1 (origine) e quello 6 (destinazione)
+nel grafo G=(Nodi,Archi) seguente;
+
+Nodi = {1 2 3 4 5 6};
+Archi = {(1,2) (1,4) (2,3) (2,6) (3,4) (4,1) (4,5) (5,1) (5,6) 
+(6,3)};
+
+con costo degli archi cosi' definito:
+arco costo 
+1,2   8
+1,4   6
+2,3   2
+2,6   5
+3,4   5
+4,1   6
+4,5   2
+5,1   7
+5,6   4
+6,3   8
+;
+-------------------------------------------------------------  
+Problema 6, Variante I
+
+Si determini nel medesimo grafo il massimo numero di cammini
+disgiunti sui nodi (senza nodi in comune, tranne l'origine
+e la destinazione) fra il nodo 1 (origine) e quello 6 (destinazione).
+
+Giustificazione: rete di comunicazione, resistenza a rotture sui nodi
+-------------------------------------------------------------  
+Problema 6, Variante II
+
+Si determini nel medesimo grafo il massimo numero di cammini
+disgiunti sui nodi (senza nodi in comune, tranne l'origine
+e la destinazione) al variare di tutte le possibili origini
+e destinazioni
+
+*******************************************
+Problema 7.
+
+Acceleratore
+Data una regione rettangolare, compresa tra i punti di ascissa -100 e 100
+e di ordinata -50 e 50, e dati 16 cerchi di cui sono noti i centri e
+i raggi, come riportato nella tabella, determinare raggio e 
+centro di due cerchi uguali,
+tangenti fra loro, non sovrapposti, di raggio massimo, e tali che 
+a) non si sovrappongono ad alcuno dei cerchi dati e 
+b) sono completamente interni alla regione.
+
+Cerchio x y r
+A -80 30 5
+B -87 -15 2
+C -81 -35 4
+D -59 25 4
+E -25 -30 4
+F -33 -15 2
+G -12 1 5
+H - 6 43 5
+I 0 -24 8
+J 10 10 9
+K 20 -15 2
+L 30 25 2
+M 41 -31 10
+N 55 15 5
+O 69 -10 10
+P 80 28 9
+
+*******************************************
+Problema 8.
+
+Dieta
+Una mensa deve pianificare gli acquisti degli alimenti per la sua attività. 
+La dieta deve obbedire a requisiti nutrizionali minimi, nonché vincolare le porzioni 
+massime di ogni pietanza entro certi limiti. Conoscendo i costi unitari dei vari alimenti,
+trovare la dieta ottima che minimizzi il costo complessivo rispettando i vincoli imposti.
+Alimento Costo Quantità massima
+(euro per Hg) (Hg)
+Pane    0.1    4
+Latte   0.5    3
+Uova    0.12   1
+Carne   0.9    2
+Dolce   1.3    2
+
+Requisiti nutrizionali minimi espressi in fabbisogno minimo al pasto 
+di calorie, proteine e calcio:
+Calorie   600   cal
+Proteine   50   g
+Calcio      0.7 g
+
+Valori nutrizionali dei singoli alimenti per Hg:
+Alimento Calorie Proteine Calcio
+Pane     30      5g       0.02g
+Latte    50     15g       0.15g
+Uova    150     30g       0.05g
+Carne   180     90g       0.08g
+Dolce   400     70g       0.01g
+
+*******************************************
+Problema 9.
+
+Mix Produttivo
+Una fabbrica produce 3 diversi tipi di cioccolata: al latte, fondente con nocciole,
+al latte con nocciole. Per la produzione della cioccolata sono necessari
+quattro ingredienti: latte, cacao, nocciole e zucchero. Nella tabella vengono
+indicati i kg di nocciole, cacao e zucchero, e i litri di latte necessari per
+ciascun kg di cioccolata:
+
+        al latte     fond. con nocciole      latte con nocciole
+latte      1              0                          1
+cacao      1              2                          0.5
+nocciole   0              1                          1
+zucchero   1              0.5                        1
+
+Sono disponibili in totale 750litri di latte, 1000kg di cacao, 400kg di nocciole
+e 500kg di zucchero. Ogni kg di cioccolata al latte viene venduto a 7 euro,
+ogni kg di cioccolata fondente con nocciole viene venduto a 10 euro, ogni kg di
+cioccolata al latte con nocciole viene venduto a 9 euro. Si vuole massimizzare
+il profitto.
+
+*******************************************
+Problema 10.
+
+Trasporto
+Una ditta di trasporto deve trasferire container vuoti dai propri 6 Magazzini, 
+situati a Verona, Perugia, Roma, Pescara, Taranto e Lamezia, 
+ai principali Porti nazionali (Genova, Venezia, Ancona, Napoli, Bari).
+Le disponibilità di container vuoti ai Magazzini sono le seguenti
+Container vuoti
+Verona 10
+Perugia 12
+Roma 20
+Pescara 24
+Taranto 18
+Lamezia 40
+
+e le richieste ai Porti sono le seguenti:
+Container richiesti
+Genova 20
+Venezia 15
+Ancona 25
+Napoli 33
+Bari 21
+
+Trasportare i container dai magazzini ai porti costa. Il costo di trasporto di 
+ciascun container è proporzionale alla distanza percorsa dal camion che lo 
+trasporta. Il costo di trasporto chilometrico per ogni container 
+è di 30 cent. di euro / km. 
+Le distanze fra Magazzini e Porti sono riportate in km nella seguente tabella:
+        Genova Venezia Ancona Napoli Bari
+Verona    290    115    355    715    810
+Perugia   380    340    165    380    610
+Roma      505    530    285    220    450
+Pescara   655    450    155    240    315
+Taranto  1010    840    550    305     95
+Lamezia  1072   1097    747    372    333
+Formulare un modello per determinare il piano di produzione che minimizza il costo complessivo
+di trasporto.
+
+Rispondere inoltre alle seguenti domande:
+
+1 Nella formulazione, è necessario imporre l'integralità delle variabili?
+
+2 Ci sono dei porti con richieste di container non soddisfatte? Se si, quali?
+
+3 Di quanto cambierebbe la funzione obiettivo se la disponibilità di 
+        container vuoti a Perugia diminuisse di 2 unità?
+
+4 Di quanto può variare la disponibilità di container vuoti al magazzino di 
+        Lamezia senza che la soluzione cambi?
+
+*******************************************
+Problema 11.
+
+Localizzazione e trasporto
+Dato un insieme di potenziali depositi, ciascuno con un dato
+costo corrispondente, ed un insieme di utenti da rifornire, dato il costo di
+trasporto della merce tra ogni utente ed ogni deposito, decidere da dove erogare
+il servizio in modo da minimizzare il costo complessivo. Ogni utente viene servito
+in toto da un solo deposito.
+
+
+Costi di trasporto da 5 depositi a 10 utenti:
+Deposito               Utente
+  1        35 24 62 57 81 34 36 12 63 24
+  2        72 25 42 25 64 14 24 74 84 15
+  3        48 37 62 14 56 94 51 76 11 21
+  4        26 26 73 83 15 89 89 21 44 53
+  5        62 26 37 26 15 37 24 61 54 13
+  
+Costi di esercizio dei depositi.
+Deposito Costo 
+  1       35   
+  2       32   
+  3       38   
+  4       38   
+  5       41     
+-------------------------------------------------------------  
+
+Variante con capacità: come sopra, ma ogni deposito ha una data capacità
+ed ogni utente ha una data domanda. Ogni utente può essere rifornito anche da
+più depositi diversi frazionando fra piu' depositi la sua domanda
+
+Capacità dei depositi.
+Deposito  Capacità
+  1         175
+  2         126
+  3         110
+  4          92
+  5         155
+
+Utente 1 2 3 4 5 6 7 8 9 10
+Domanda 35 28 49 37 40 26 31 48 28 36
+
+*******************************************
+Problema 12.
+
+Pianificazione Multiperiodo e gestione personale
+Un'impresa di produzione produce un solo tipo di merce. Ci sono 40 operai. 
+Ciascun operaio produce 20 unita' di merce al mese. 
+La domanda prevista nel prossimo semestre e':
+Mese              1   2   3   4   5   6
+Unita' richieste 700 600 500 800 900 800
+Per adattare la produzione alle fluttuazioni, si impiega lavoro straordinario:
+ogni operaio puo' produrre al massimo 6 unita' in piu' al mese, al costo 
+unitario di 5 euro. E' disponibile un magazzino, in cui stoccare i prodotti. 
+Costo unitario di stoccaggio 10 euro al mese.
+Si assume o licenzia personale. 
+Da un mese al successivo il numero di operai puo' variare 
+al massimo di 5 unita' in piu' o in meno, 
+con un sovrapprezzo di 500 euro per ogni assunzione
+e 700 euro per ogni licenziamento.
+All'inizio del periodo di gestione il magazzino e' vuoto, 
+e si richiede che debba essere vuoto anche alla fine del semestre. 
+Si vuole pianificare la gestione dell'impresa in modo da massimizzare 
+i guadagni. 
+
+*******************************************
+Problema 13.
+
+Problema di Scheduling 
+Un cluster di calcolo di m = 3 macchine riceve n = 6 processi. 
+I tempi p_ij (in minuti) stimati per l’esecuzione di ogni processo j
+su ciascuna macchina i sono riportati nella seguente tabella 
+p_ij 1 2 3 4 5 6
+ 1   3 4 2 7 8 3
+ 2   6 8 4 9 3 4
+ 3   4 1 5 6 7 4
+Si consideri un orizzonte di programmazione temporale T = 10. 
+Ogni macchina puo' lavorare al piu' un processo alla volta. 
+Si sa inoltre che per ogni coppia ordinata di processi (j, k) in un
+dato insieme A e' necessario che il processo j termini prima del processo k.
+A = {(1, 2), (2, 3), (1, 5), (2, 6)}
+Ad esempio il processo 3 puo' iniziare solo quando il processo 2 si e' concluso
+indipendentemente da quali macchine li processino.
+Il problema e' quello di trovare un assegnamento dei processi alle varie macchine 
+in modo che l’istante di completamento di tutti sia minimo (min Cmax).
+
+*******************************************
+Problema 14.
+
+Classificazione
+Sono stati effettuati sette esperimenti ciascuno dei quali ha dato origine 
+a tre valori, corrispondenti a tre coordinate spaziali.
+Si vuole dividere l'insieme di esperimenti in due classi in modo da minimizzare 
+la massima differenza per ciascuna coordinata fra esperimenti che stanno 
+in classi diverse. 
+
+Esperimento Esito
+1 83 14 42
+2 38 63 56
+3 28 24 12
+4 59 7 53
+5 25 35 83
+6 52 86 85
+7 59 64 25

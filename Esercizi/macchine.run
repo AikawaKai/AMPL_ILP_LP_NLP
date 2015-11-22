@@ -1,0 +1,57 @@
+#se scegliamo il solutore cplex queste opzioni mi consentono di vedere parte 
+# dei messaggi legati al processo di soluzione dell'algoritmo
+option solver "../cplex";
+option cplex_options 'mipdisplay=2 timing=1';
+option solver_msg 1;
+
+model "../macchine2model.mod";
+data "../macchine.dat";
+
+#il file modello contiene due funzioni obiettivo
+#le istuzioni successive consentono di assemblare problemi
+
+problem macchineCmax: x, Cmax, max_tempo, assegnamento, min_max_time;
+
+option relax_integrality 0;
+
+problem macchineSomma: x, tempo, assegnamento;
+option relax_integrality 0;
+
+#ora specifico cosa voglio risolvere
+
+solve macchineSomma;
+
+display x;
+for {i in Macchine}
+{
+	display sum{j in Processi} p[i,j] * x[i,j];
+}
+
+#ora posso cambiare problema
+
+solve macchineCmax;
+
+display x;
+for{i in Macchine}
+{
+	display sum{j in Processi}p[i,j]*x[i,j];
+}
+
+#rilassiamo le condizioni di interezza sulle variabili x
+
+option relax_integrality 1;
+
+solve macchineSomma;
+
+display x;
+for {i in Macchine}
+{
+	display sum{j in Processi} p[i,j] * x[i,j];
+}
+
+solve macchineCmax;
+display x;
+for{i in Macchine}
+{
+	display sum{j in Processi}p[i,j]*x[i,j];
+}

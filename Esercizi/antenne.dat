@@ -1,0 +1,26 @@
+set Aree := 1 2 3 4 5;
+set Siti := A B C D E;
+param requisiti := 
+1 1 
+2 1
+3 1
+4 1
+5 1
+;
+
+param Costi := 
+A 18
+B 40
+C 5
+D 21
+E 16
+;
+
+param Copertura :
+A B C D E :=
+1 0 1 1 1 0
+2 1 0 0 0 1
+3 1 1 0 1 0
+4 0 1 0 1 1 
+5 1 1 0 0 1
+;

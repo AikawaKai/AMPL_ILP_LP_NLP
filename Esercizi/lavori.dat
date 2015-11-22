@@ -1,0 +1,8 @@
+set Persone := Bianchi Verdi Rossi Ferrari;
+set Lavori := A B C D;
+param Tempi : Bianchi Verdi Rossi Ferrari :=
+A 12 15 9 5
+B 13 16 11 6
+C 6 8 5 3
+D 5 7 4 3
+;

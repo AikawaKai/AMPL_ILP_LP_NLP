@@ -1,0 +1,23 @@
+reset;
+model camminominimovar1.mod;
+data camminominimo.dat;
+param k;
+param ss;
+param tt;
+param minf default 999999;
+param val{1..card(nodi)*card(nodi)};
+let k:= 1;
+for{i in nodi, j in nodi : i<>j}
+{
+  let origin :=i;
+  let destinazione :=j;
+  solve;
+  let val[k] := NumCammini;
+  let k := k+1;
+  if NumCammini < minf then{
+    let minf := NumCammini;
+    let ss := origin;
+    let tt := destinazione;
+  }
+}
+display minf, ss, tt;

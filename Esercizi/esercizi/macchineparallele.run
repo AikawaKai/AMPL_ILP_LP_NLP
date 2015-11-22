@@ -1,0 +1,27 @@
+option solver "./cplex";
+
+option cplex option 'mipdisplay=2 timing=1';
+option solver_msg 1;
+
+model macchineparallele2.mod;
+data macchineparallele.dat;
+
+problem macchineCmax: x, Cmax, max_tempo, assegnamento, min_max_time;
+option relax_integrality 0;
+
+problem macchineSomma: x, somma_tempi, assegnamento;
+option relax_integrality 0;
+
+solve macchineSomma;
+display x;
+for{i in Macchine}
+{
+  display sum {j in Processi}p[i,j]*x[i,j];
+}
+
+solve macchineCmax;
+display x;
+for{i in Macchine}
+{
+  display sum{j in Processi}p[i,j]*x[i,j];
+}

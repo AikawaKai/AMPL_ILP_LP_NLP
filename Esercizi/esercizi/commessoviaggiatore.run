@@ -1,0 +1,38 @@
+reset;
+option solver cplex;
+option solver_msg 0;
+model commessoviaggiatore.mod;
+data commessoviaggiatore.dat;
+let numerocicli := 0;
+param nodosuccessore[V] >= 0, integer;
+param nodocorrente >= 0, integer;
+
+for {i in V, j in V : i>j}
+{
+  let d[i,j] := d[j,i];
+}
+
+param termination binary;
+let termination := 0;
+repeat while {termination  = 0} {
+  solve;
+  let numerocicli := numerocicli + 1;
+  for {i in V} {
+    let nodosuccessore[i] := sum{j in V : j != i} j * x[i,j];
+  }
+  let nodocorrente := 1;
+  let ciclo[numerocicli] := {};
+  repeat {
+    let ciclo[numerocicli] := ciclo[numerocicli] union {nodocorrente};
+    let nodocorrente := nodosuccessore[nodocorrente];
+  }until {nodocorrente = 1};
+  printf "ciclo :(";
+  for {i in ciclo [numerocicli]}
+  {
+    printf "%d, ", i;
+  }
+  printf "1)\n";
+  if (card(ciclo[numerocicli])>=n) then {
+    let termination = 1;
+  }
+}

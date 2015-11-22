@@ -1,0 +1,19 @@
+reset;
+model "./cerchi.mod";
+data "./cerchi.dat";
+option solver "./snopt";
+
+param numTent;
+param minR default 999999;
+let numTent := 150;
+param val{1..numTent};
+set IT := {1..numTent};
+option randseed 1;
+for {j in IT} {
+  for {i in N} let y[i] := y[i] + Uniform(-15,20);
+  for {i in N} let x[i] := x[i] + Uniform(-15,20);
+  solve;
+  let val[j] := R;
+  if R < minR then let minR := R;
+};
+display minR;

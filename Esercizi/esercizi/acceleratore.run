@@ -1,0 +1,29 @@
+reset;
+model acceleratore.mod;
+data acceleratore.dat;
+option solver "./minos";
+solve;
+
+param numTent;
+param maxR default -999999;
+param bestX;
+param bestY;
+let numTent := 25;
+param val{1..numTent};
+set IT := {1..numTent};
+option randseed;
+for {j in IT} {
+  for {i in Anelli} let AX[i] := -AX[i] + Uniform(-40,40);
+  for {i in Anelli} let AY[i] := -AY[i] + Uniform(-20,20);
+  solve;
+  let val[j] := AR[1];
+  if AR[1] > maxR then
+  {
+    let maxR := AR[1];
+    let bestX := AX[1];
+    let bestY := AY[1];
+  }
+
+};
+
+display maxR;

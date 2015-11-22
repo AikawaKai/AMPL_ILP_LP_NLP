@@ -1,0 +1,44 @@
+reset;
+option solver "./cplex";
+option solver_msg 0;
+model tsp.mod;
+data tsp.dat;
+
+let numerocicli := 0;
+param nodosuccessore{V} >= 0, integer;
+param nodocorrente >=0, integer;
+for {i in V, j in V: i>j}
+{
+  let d[i,j] := d[j,i]
+}
+
+param termination, default 0;
+repeat while (termination = 0)
+{
+  solve;
+  for{i in V}
+  {
+    let nodosuccessore[i]:= sum{j in V: j!=i} j * x[i,j];
+  }
+  #trova sottocicli
+  let numerocicli := numerocicli + 1;
+  let nodocorrente := 1;
+  let ciclo[numerocicli] := {};
+  repeat {
+    let ciclo[numerocicli] := ciclo[numerocicli] union {nodocorrente};
+    let nodocorrente := nodosuccessore[nodocorrente];
+  }until (nodocorrente = 1);
+  printf "ciclo: (";
+  for {i in ciclo[numerocicli]}{
+    printf "%d, ", i;
+  }
+  printf "1)\n";
+  for {i in V} {
+    printf "nodo: %d ",i;
+    printf "successore %d", nodosuccessore[i];
+  }
+  if (card(ciclo[numerocicli])>= n) then
+  {
+    let termination := 1;
+  }
+}

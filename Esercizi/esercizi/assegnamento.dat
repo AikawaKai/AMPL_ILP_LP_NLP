@@ -1,0 +1,21 @@
+set PERSONE :=
+1
+2
+3
+4
+;
+
+set LAVORI :=
+A
+B
+C
+D
+;
+
+param COSTI:
+  1 2 3 4 :=
+A 12 15 9 5
+B 13 16 11 6
+C 6 8 5 3
+D 5 7 4 3
+;

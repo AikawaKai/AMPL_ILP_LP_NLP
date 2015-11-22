@@ -1,0 +1,27 @@
+reset;
+
+model maxcammini.mod;
+data maxcammini.dat;
+option solver "./cplex";
+
+param maxnumcammini default 0;
+param ss;
+param tt;
+param results{1..card(nodi)*card(nodi)};
+param counter default 1;
+for{i in nodi, j in nodi: j<>i}
+{
+  let origin := i;
+  let dest := j;
+  solve;
+  let results[counter] := numcammini;
+  let counter := counter + 1;
+  if numcammini > maxnumcammini then
+  {
+    let ss := origin;
+    let tt := dest;
+    let maxnumcammini := numcammini;
+  }
+}
+display maxnumcammini, ss, tt;
+display results;

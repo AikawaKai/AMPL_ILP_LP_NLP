@@ -1,27 +1,27 @@
-#SETS
-set I; #Insieme dei nutrienti
-set J; #Insieme degli alimenti
 
-#PARAMS
-param costo{J};
-param quantita_max{J};
-param fabbisogno{I};
-param apporto{I,J};
+set Alimenti;
 
-#VARS
-# var x{J} >= 0;
+param Costo{Alimenti};
+param MaxQuantita{Alimenti};
 
-# E' possibile indicare direttamente un limite superiore 
-# per ogni variabile
-var x{j in J} >= 0, <= quantita_max[j];
+param minCalorie := 600;
+param minProteine := 50;
+param minCalcio := 0.7;
 
-#OBJ
-minimize costo_totale:
-   sum{j in J} costo[j] * x[j];
+param CalorieAlimenti{Alimenti};
+param ProteineAlimenti{Alimenti};
+param CalcioAlimenti{Alimenti};
 
-#CONSTRAINTS
-subject to FabbisognoGiornaliero {i in I}:
-   sum{j in J} apporto[i,j] * x[j] >= fabbisogno[i];
+var Hg{Alimenti}>=0 integer;
 
-#subject to QuantitaMassima {j in J}:
-#   x[j] <= quantita_max[j];
+minimize COSTOTOT : sum{i in Alimenti} Hg[i] * Costo[i];
+
+subject to proteine:
+  sum{i in Alimenti} Hg[i]*ProteineAlimenti[i] >= minProteine;
+subject to calorie:
+  sum{i in Alimenti} Hg[i]*CalorieAlimenti[i] >= minCalorie;
+subject to calcio:
+  sum{i in Alimenti} Hg[i]*CalcioAlimenti[i] >= minCalcio;
+
+subject to maxAlimenti {i in Alimenti}:
+  Hg[i]<=MaxQuantita[i];

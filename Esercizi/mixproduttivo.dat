@@ -1,0 +1,23 @@
+set Cioccolate := allatte, fondnoc, lattnocc;
+set Ingredienti := latte, cacao, nocciole, zucchero;
+
+param IngredientiNecessari :
+        allatte    fondnoc     lattnocc :=
+latte     1         0            1
+cacao     1         2            0.5
+nocciole  0         1            1
+zucchero  1         0.5          1
+;
+
+param maxIngredienti :=
+latte 750
+cacao 1000
+nocciole 400
+zucchero 500
+;
+
+param prezzi :=
+allatte 7
+fondnoc 10
+lattnocc 9
+;
